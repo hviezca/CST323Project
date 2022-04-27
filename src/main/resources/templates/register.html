@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+</head>
+<body>
+<form>
+    <center>
+
+        Registration Page<br><br>
+        First Name:  <input type="text" id="fname" name="fname"><br><br>
+        Last Name:  <input type="text" id="lname" name="lname"><br><br>
+        User Name:  <input type="text" id="uname" name="uname"><br><br>
+          Password:   <input type="text" id="password" name="password"><br><br>
+
+        <commandButton action="#{FormController.onLogin()}" value="Submit" />
+        <a href="register"><button>Submit</button></a>   <button type="button" name="back" onclick="history.back()">Go back</button>
+    </center>
+</form>
+</ui:define>
+
+
+</ui:composition>
+</body>
+</html>
