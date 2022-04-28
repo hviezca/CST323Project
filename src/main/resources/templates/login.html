@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:insert="~{ common/include :: include}">
     <meta charset="UTF-8">
     <title>Login</title>
 </head>
 <body>
+<div th:insert="~{ common/header :: header}"></div>
 <center>Login Page<br>
 <form>
     <label for="fname">User name:</label><br>
@@ -14,5 +15,6 @@
     <button type="button" name="back" onclick="history.back()">Go back</button>
 </form>
 </center>
+<div th:insert="~{ common/footer :: footer}"></div>
 </body>
 </html>
