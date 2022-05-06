@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<head th:insert="~{ common/include :: include}">
     <meta charset="UTF-8">
     <title>Test Page</title>
 </head>
 <body>
+<div th:insert="~{ common/header :: header}"></div>
 <H1>Project Test Page </H1>
+<div th:insert="~{ common/footer :: footer}"></div>
 </body>
 </html>
