@@ -13,9 +13,9 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
     @Autowired
     private ContactRepository repository;
 
-    public ContactDataService(ContactRepository repository){
+    /*public ContactDataService(ContactRepository repository){
         this.repository = repository;
-    }
+    }*/
     /**
      * Return a List of all Objects from database
      *
@@ -34,7 +34,7 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public ContactEntity findById(int id) {
-        Optional<ContactEntity> entity = repository.findById((long) id);
+       Optional<ContactEntity> entity = repository.findById((long) id);
         return entity.get();
     }
 
