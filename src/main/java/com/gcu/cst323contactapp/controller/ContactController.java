@@ -1,8 +1,9 @@
 package com.gcu.cst323contactapp.controller;
 
 import com.gcu.cst323contactapp.business.ContactBusinessService;
+import com.gcu.cst323contactapp.model.UserModel;
 import org.springframework.stereotype.Controller;
-import com.gcu.cst323contactapp.data.entity.ContactEntity;
+import com.gcu.cst323contactapp.entity.ContactEntity;
 import com.gcu.cst323contactapp.model.ContactModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,10 +50,10 @@ public class ContactController {
      * Registers user in database
      */
     @PostMapping("/doRegister")
-    public String doRegister(@ModelAttribute ContactModel contactModel) {
+    public String doRegister(@ModelAttribute UserModel userModel) {
 
         //get userService and add new user
-        service.addUser(contactModel);
+        service.addUser(userModel);
         return "login";
     }
 

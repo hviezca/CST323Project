@@ -1,4 +1,4 @@
-package com.gcu.cst323contactapp.data.service;
+package com.gcu.cst323contactapp.service;
 
 import java.util.List;
 

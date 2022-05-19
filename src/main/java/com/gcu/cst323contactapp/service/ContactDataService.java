@@ -1,7 +1,7 @@
-package com.gcu.cst323contactapp.data.service;
+package com.gcu.cst323contactapp.service;
 
-import com.gcu.cst323contactapp.data.entity.ContactEntity;
-import com.gcu.cst323contactapp.data.repository.ContactRepository;
+import com.gcu.cst323contactapp.entity.ContactEntity;
+import com.gcu.cst323contactapp.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

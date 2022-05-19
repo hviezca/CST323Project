@@ -7,67 +7,40 @@ package com.gcu.cst323contactapp.model;
  */
 
 public class UserModel {
+    private int id;
+    private String userName;
+    private String password;
 
-//    @NotNull()
-//    @Size(min=1,max=50)
-    String firstName;
-    String lastName;
-    int phoneNum;
-    String email;
-    String userName;
-    String password;
-
-    public UserModel() {
-        super();
-    }
-
-    public UserModel(String firstName, String lastName, int phoneNum, String email, String userName, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNum = phoneNum;
-        this.email = email;
+    public UserModel(int id, String userName, String password) {
+        this.id = id;
         this.userName = userName;
         this.password = password;
-
     }
 
-    //getters/setters
-    public String getFirstName() {
-        return firstName;
+    public UserModel() {
     }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+
+    public int getId() {
+        return id;
     }
-    public String getLastName() {
-        return lastName;
+
+    public void setId(int id) {
+        this.id = id;
     }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
     public String getUserName() {
         return userName;
     }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getPhoneNum() {
-        return phoneNum;
-    }
-    public void setPhoneNum(int phoneNum) {
-        this.phoneNum = phoneNum;
-    }
-
-
 }
