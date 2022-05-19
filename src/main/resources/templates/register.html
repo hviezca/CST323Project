@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:insert="~{ common/include :: include}">
     <meta charset="UTF-8">
     <title>Registration Page</title>
@@ -8,15 +8,29 @@
 <div th:insert="~{ common/header :: header}"></div>
 <form>
     <center>
+        <h1>Registration page</h1>
+        <form th:action="@{/doRegister}" th:object="${userModel}" method="POST">
+            <div class="mb-3 justify-content-center">
+                <label class="form-label">First Name:</label>
+                <input type="text" class="form-control" th:field="*{firstName}" required>
+            </div>
 
-        Registration Page<br><br>
-        First Name:  <input type="text" id="fname" name="fname"><br><br>
-        Last Name:  <input type="text" id="lname" name="lname"><br><br>
-        User Name:  <input type="text" id="uname" name="uname"><br><br>
-          Password:   <input type="text" id="password" name="password"><br><br>
+            <div class="mb-3 justify-content-center">
+                <label class="form-label">Last Name:</label>
+                <input type="text" class="form-control" th:field="*{lastName}" required>
+            </div>
 
-        <commandButton action="#{FormController.onLogin()}" value="Submit" />
-        <a href="register"><button>Submit</button></a>   <button type="button" name="back" onclick="history.back()">Go back</button>
+            <div class="mb-3 justify-content-center">
+                <label class="form-label">User Name:</label>
+                <input type="text" class="form-control" th:field="*{userName}" required>
+            </div>
+
+            <div class="mb-3 justify-content-center">
+                <label class="form-label">Password:</label>
+                <input type="text" class="form-control" th:field="*{password}" required>
+            </div>
+
+            <button type="submit" class="btn btn-secondary btn-lg">Submit</button>           <button type="button" name="back" onclick="history.back()" class="btn btn-secondary btn-lg">Go back</button>
     </center>
 </form>
 </ui:define>

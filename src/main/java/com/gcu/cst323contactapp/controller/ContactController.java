@@ -46,12 +46,20 @@ public class ContactController {
     @GetMapping("/register")
     public String onRegister(){ return "register"; }
 
+    /**
+     * Registers user in database
+     */
+    @PostMapping("/doRegister")
+    public String doRegister(@ModelAttribute ContactModel contactModel) {
+
+        //get userService and add new user
+        service.addUser(contactModel);
+        return "login";
+    }
+
     @GetMapping("/view")
     public String viewContacts(Model model){
-        List<ContactModel> contacts = new ArrayList<>();
-        contacts.add(new ContactModel(1, "Contact 1 Name", "Contact 1 Last Name"));
-        contacts.add(new ContactModel(2, "Contact 2 Name", "Contact 2 Last Name"));
-        contacts.add(new ContactModel(3, "Contact 3 Name", "Contact 3 Last Name"));
+        List<ContactModel> contacts = service.getAllContacts();
 
         model.addAttribute("title", "View Contacts");
         model.addAttribute("contacts", contacts);
@@ -61,7 +69,7 @@ public class ContactController {
 
 
     @GetMapping("/delete/{id}")
-    public String deletePet(@PathVariable("id") int id, Model model)
+    public String deleteContact(@PathVariable("id") int id, Model model)
     {
         if(service.deleteById(id)) {
             List<ContactModel> contacts = service.getAllContacts();

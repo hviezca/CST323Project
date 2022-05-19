@@ -34,7 +34,7 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public ContactEntity findById(int id) {
-        Optional<ContactEntity> entity = repository.findById((long) id);
+       Optional<ContactEntity> entity = repository.findById((long) id);
         return entity.get();
     }
 
