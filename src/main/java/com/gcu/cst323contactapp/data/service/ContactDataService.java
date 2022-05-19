@@ -13,9 +13,9 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
     @Autowired
     private ContactRepository repository;
 
-    /*public ContactDataService(ContactRepository repository){
+    public ContactDataService(ContactRepository repository){
         this.repository = repository;
-    }*/
+    }
     /**
      * Return a List of all Objects from database
      *

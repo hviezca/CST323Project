@@ -8,7 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
 public class ContactEntity {
 
     @Id
-    @Column("id")
+    //@Column("id")
     private long id;
 
     @Column("first_name")
@@ -20,6 +20,7 @@ public class ContactEntity {
     public ContactEntity() {}
 
     public ContactEntity(long id, String first_name, String last_name) {
+        super();
         this.id = id;
         this.firstName = first_name;
         this.lastName = last_name;

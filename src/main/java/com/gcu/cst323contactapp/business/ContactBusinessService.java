@@ -3,6 +3,7 @@ package com.gcu.cst323contactapp.business;
 import com.gcu.cst323contactapp.data.entity.ContactEntity;
 import com.gcu.cst323contactapp.data.service.ContactDataService;
 import com.gcu.cst323contactapp.model.ContactModel;
+import com.gcu.cst323contactapp.model.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -19,6 +20,20 @@ public class ContactBusinessService {
 
     @Autowired
     private ContactDataService service;
+
+    /**
+     * Method for adding new user to database
+     * @author Matthias 5/18/22
+     */
+    public boolean addUser(ContactModel newUser){
+        //Create entity (user) from model (user)
+        ContactEntity entity = new ContactEntity(newUser.getId(),
+                                                newUser.getFirstName(),
+                                                newUser.getLastName());
+
+        //Create user in database
+        return service.create(entity);
+    }
 
     public List<ContactModel> getAllContacts() {
 

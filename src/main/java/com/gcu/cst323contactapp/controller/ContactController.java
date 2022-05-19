@@ -46,6 +46,17 @@ public class ContactController {
     @GetMapping("/register")
     public String onRegister(){ return "register"; }
 
+    /**
+     * Registers user in database
+     */
+    @PostMapping("/doRegister")
+    public String doRegister(@ModelAttribute ContactModel contactModel) {
+
+        //get userService and add new user
+        service.addUser(contactModel);
+        return "login";
+    }
+
     @GetMapping("/view")
     public String viewContacts(Model model){
         List<ContactModel> contacts = service.getAllContacts();
