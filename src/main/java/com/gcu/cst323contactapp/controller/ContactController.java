@@ -57,7 +57,7 @@ public class ContactController {
         return "login";
     }
 
-    @GetMapping("/view")
+    @GetMapping("/view-contacts")
     public String viewContacts(Model model){
         List<ContactModel> contacts = service.getAllContacts();
 
@@ -77,5 +77,10 @@ public class ContactController {
             model.addAttribute("contacts", contacts);
         }
         return "view-contacts";
+    }
+
+    @GetMapping(/addContact)
+    public String addContact(Model model){
+
     }
 }
