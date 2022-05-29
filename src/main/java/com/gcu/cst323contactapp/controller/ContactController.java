@@ -92,10 +92,7 @@ public class ContactController {
 
     @PostMapping("/addContactSubmit")
     public String addContactSubmit(@ModelAttribute("contact")ContactModel contact, Model model){
-
         service.addContact(contact);
-
-
         List<ContactModel> contacts = service.getAllContacts();
         model.addAttribute("title", "View Contacts");
         model.addAttribute("contacts", contacts);
@@ -104,9 +101,7 @@ public class ContactController {
 
     @GetMapping("/update/{id}")
     public String updateContact(@PathVariable("id") int id, Model model){
-        System.out.println(id);
         ContactModel contact = service.findById(id);
-        contact.printInfo();
         model.addAttribute("title", "View Contacts");
         model.addAttribute("contact", contact);
         return "update";
@@ -114,9 +109,7 @@ public class ContactController {
 
     @PostMapping("/updateContactSubmit")
     public String updateContactSubmit(@ModelAttribute("contact")ContactModel contact, Model model){
-
         service.updateContact(contact);
-
         List<ContactModel> contacts = service.getAllContacts();
         model.addAttribute("title", "View Contacts");
         model.addAttribute("contacts", contacts);
