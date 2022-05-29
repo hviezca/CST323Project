@@ -1,6 +1,7 @@
 package com.gcu.cst323contactapp.controller;
 
 import com.gcu.cst323contactapp.business.ContactBusinessService;
+import com.gcu.cst323contactapp.business.UserBusinessService;
 import com.gcu.cst323contactapp.model.UserModel;
 import org.springframework.stereotype.Controller;
 import com.gcu.cst323contactapp.entity.ContactEntity;
@@ -23,6 +24,9 @@ public class ContactController {
     @Autowired
     ContactBusinessService service;
 
+    @Autowired
+    UserBusinessService userService;
+
     /**
      *
      * @return home.html
@@ -44,7 +48,9 @@ public class ContactController {
      * @return register.html
      */
     @GetMapping("/register")
-    public String onRegister(){ return "register"; }
+    public String onRegister(Model model){
+        model.addAttribute("userModel", new UserModel());
+        return "register"; }
 
     /**
      * Registers user in database
@@ -53,7 +59,7 @@ public class ContactController {
     public String doRegister(@ModelAttribute UserModel userModel) {
 
         //get userService and add new user
-        service.addUser(userModel);
+        userService.addUser(userModel);
         return "login";
     }
 
