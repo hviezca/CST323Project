@@ -46,7 +46,15 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public boolean create(ContactEntity entity) {
-        return false;
+        try{
+            //Save new Entity to database
+            repository.save(entity);
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+
     }
 
     /**
@@ -57,7 +65,14 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public boolean update(ContactEntity entity) {
-        return false;
+        try{
+            //Save new Entity to database
+            repository.save(entity);
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     /**
