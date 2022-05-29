@@ -8,7 +8,7 @@ import org.springframework.data.relational.core.mapping.Table;
  * UserEntity to match database table attributes named 'user' in MySql
  */
 
-@Table("users")
+@Table("user")
 public class UserEntity {
     @Id
     private int id;
