@@ -1,5 +1,6 @@
 package com.gcu.cst323contactapp.model;
 
+import com.gcu.cst323contactapp.entity.ContactEntity;
 import org.springframework.data.annotation.Id;
 import javax.validation.constraints.NotEmpty;
 
@@ -44,4 +45,14 @@ public class ContactModel {
     public void setLastName(String last_name) {
         this.lastName = last_name;
     }
+
+    public ContactEntity toContactEntity(){
+        ContactEntity entity = new ContactEntity(this.id,this.firstName,this.lastName);
+        return entity;
+    }
+
+    public void printInfo(){
+        System.out.println(this.id + ", " + this.firstName + ", " + this.lastName + ".");
+    }
+
 }

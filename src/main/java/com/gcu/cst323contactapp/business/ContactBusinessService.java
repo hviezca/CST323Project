@@ -78,8 +78,7 @@ public class ContactBusinessService {
         }
     }
 
-    public void updateContact(int id) {
-
-
+    public boolean updateContact(ContactModel contact) {
+        return service.update(contact.toContactEntity());
     }
 }

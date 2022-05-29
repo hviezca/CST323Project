@@ -102,18 +102,20 @@ public class ContactController {
         return "view-contacts";
     }
 
-    @GetMapping("/update/id")
-    public String updateContact(@ModelAttribute("contact")ContactModel contact, Model model){
-        List<ContactModel> contacts = service.getAllContacts();
+    @GetMapping("/update/{id}")
+    public String updateContact(@PathVariable("id") int id, Model model){
+        System.out.println(id);
+        ContactModel contact = service.findById(id);
+        contact.printInfo();
         model.addAttribute("title", "View Contacts");
-        model.addAttribute("contacts", contacts);
-        return "addContact";
+        model.addAttribute("contact", contact);
+        return "update";
     }
 
     @PostMapping("/updateContactSubmit")
-    public String updateContactSubmit(@PathVariable("id") int id, Model model){
+    public String updateContactSubmit(@ModelAttribute("contact")ContactModel contact, Model model){
 
-        service.updateContact(id);
+        service.updateContact(contact);
 
         List<ContactModel> contacts = service.getAllContacts();
         model.addAttribute("title", "View Contacts");
