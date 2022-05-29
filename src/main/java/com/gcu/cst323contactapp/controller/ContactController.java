@@ -41,23 +41,7 @@ public class ContactController {
      * @return login.html
      */
     @GetMapping("/login")
-    public String onLogin(Model model){
-
-        model.addAttribute("userModel", new UserModel());
-        return "login"; }
-
-    @PostMapping("/doLogin")
-    public String doLogin(@ModelAttribute UserModel model){
-
-        if(userService.getAuthorizedUser(model)){
-            //if returns true
-            return "view-contacts";
-        } else {
-            //if returns false
-            return "home";
-        }
-
-    }
+    public String onLogin(){ return "login"; }
 
     /**
      *
@@ -79,16 +63,13 @@ public class ContactController {
         return "login";
     }
 
-    @GetMapping("/view-contacts")
+    @GetMapping("/view")
     public String viewContacts(Model model){
         List<ContactModel> contacts = service.getAllContacts();
-
         model.addAttribute("title", "View Contacts");
         model.addAttribute("contacts", contacts);
-
         return "view-contacts";
     }
-
 
     @GetMapping("/delete/{id}")
     public String deleteContact(@PathVariable("id") int id, Model model)
@@ -101,8 +82,38 @@ public class ContactController {
         return "view-contacts";
     }
 
-//    @GetMapping(/addContact)
-//    public String addContact(Model model){
-//
-//    }
+    @GetMapping("/addContact")
+    public String addContact(@ModelAttribute("contact")ContactModel contact, Model model){
+        List<ContactModel> contacts = service.getAllContacts();
+        model.addAttribute("title", "Add New Contact");
+        model.addAttribute("contacts", contacts);
+        return "addContact";
+    }
+
+    @PostMapping("/addContactSubmit")
+    public String addContactSubmit(@ModelAttribute("contact")ContactModel contact, Model model){
+        service.addContact(contact);
+        List<ContactModel> contacts = service.getAllContacts();
+        model.addAttribute("title", "View Contacts");
+        model.addAttribute("contacts", contacts);
+        return "view-contacts";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateContact(@PathVariable("id") int id, Model model){
+        ContactModel contact = service.findById(id);
+        model.addAttribute("title", "View Contacts");
+        model.addAttribute("contact", contact);
+        return "update";
+    }
+
+    @PostMapping("/updateContactSubmit")
+    public String updateContactSubmit(@ModelAttribute("contact")ContactModel contact, Model model){
+        service.updateContact(contact);
+        List<ContactModel> contacts = service.getAllContacts();
+        model.addAttribute("title", "View Contacts");
+        model.addAttribute("contacts", contacts);
+        return "view-contacts";
+    }
+
 }

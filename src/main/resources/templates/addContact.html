@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{ common/include :: include}">
+    <meta charset="UTF-8">
+    <title>Add Contact Page</title>
+</head>
+<body>
+<div th:insert="~{ common/header :: header}"></div>
+<form th:action="@{/addContactSubmit}" th:object="${contact}" method="POST">
+    <center>
+        Add a New Contact<br><br>
+        First Name: <input name="fname" id="fname" type="text" th:field="${contact.firstName}"><br><br>
+        Last Name:  <input type="text" id="lname" name="lname" th:field="${contact.lastName}"><br><br>
+
+        <button type="submit" value="Add Contact" />Add Contact</button></a>
+        <button type="button" name="Cancel" onclick="history.back()">Cancel</button>
+    </center>
+</form>
+</ui:define>
+
+
+</ui:composition>
+<div th:insert="~{ common/footer :: footer}"></div>
+</body>
+</html>

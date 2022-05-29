@@ -30,6 +30,18 @@ public class ContactBusinessService {
         return service.create(entity);
     }
 
+    public boolean addContact(ContactModel newContact){
+        //Create entity (user) from model (user)
+        ContactEntity entity = new ContactEntity(newContact.getId(),
+                newContact.getFirstName(),
+                newContact.getLastName());
+
+        //Create user in database
+        return service.create(entity);
+    }
+
+
+
     public List<ContactModel> getAllContacts() {
 
         List<ContactEntity> contacts = service.findAll();
@@ -64,5 +76,10 @@ public class ContactBusinessService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean updateContact(ContactModel contact) {
+        ContactEntity entity = contact.toContactEntity();
+        return service.update(entity);
     }
 }
