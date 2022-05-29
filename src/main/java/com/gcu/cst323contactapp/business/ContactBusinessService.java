@@ -23,7 +23,7 @@ public class ContactBusinessService {
     public boolean addUser(UserModel newUser){
         //Create entity (user) from model (user)
         ContactEntity entity = new ContactEntity(newUser.getId(),
-                                                newUser.getUserName(),
+                                                newUser.getUsername(),
                                                 newUser.getPassword());
 
         //Create user in database

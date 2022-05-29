@@ -49,4 +49,9 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
     public boolean delete(UserEntity userEntity) {
         return false;
     }
+
+    public UserEntity findByUserName(String userName){
+        //Attempt to find user by username
+        return userRepo.findByUsername(userName);
+    }
 }
