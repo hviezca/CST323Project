@@ -47,10 +47,11 @@ public class ContactController {
         return "login"; }
 
     @PostMapping("/doLogin")
-    public String doLogin(@ModelAttribute UserModel model){
+    public String doLogin(@ModelAttribute UserModel userModel, Model model){
 
-        if(userService.getAuthorizedUser(model)){
+        if(userService.getAuthorizedUser(userModel)){
             //if returns true
+            model.addAttribute("contacts", service.getAllContacts());
             return "view-contacts";
         } else {
             //if returns false
