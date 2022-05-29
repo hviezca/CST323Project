@@ -41,7 +41,23 @@ public class ContactController {
      * @return login.html
      */
     @GetMapping("/login")
-    public String onLogin(){ return "login"; }
+    public String onLogin(Model model){
+
+        model.addAttribute("userModel", new UserModel());
+        return "login"; }
+
+    @PostMapping("/doLogin")
+    public String doLogin(@ModelAttribute UserModel model){
+
+        if(userService.getAuthorizedUser(model)){
+            //if returns true
+            return "view-contacts";
+        } else {
+            //if returns false
+            return "home";
+        }
+
+    }
 
     /**
      *
