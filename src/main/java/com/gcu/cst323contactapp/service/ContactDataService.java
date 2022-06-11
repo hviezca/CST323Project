@@ -2,6 +2,8 @@ package com.gcu.cst323contactapp.service;
 
 import com.gcu.cst323contactapp.entity.ContactEntity;
 import com.gcu.cst323contactapp.repository.ContactRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,12 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
     @Autowired
     private ContactRepository repository;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    /**
+     * Parametrized constructor
+     * @param - ContactRepository repository
+     */
     public ContactDataService(ContactRepository repository){
         this.repository = repository;
     }
@@ -23,7 +31,18 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public List<ContactEntity> findAll() {
-        return (List<ContactEntity>) repository.findAll();
+        // Log method entry
+        logger.info("Entering ContactDataService.findAll()");
+
+        try{
+            List<ContactEntity> entities = (List<ContactEntity>) repository.findAll();
+            logger.info("All contacts found!");
+            return entities;
+        }
+        catch (Exception e) {
+            logger.error("No contacts found ... Error: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -34,7 +53,11 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public ContactEntity findById(int id) {
+        // Log method entry
+        logger.info("Entering ContactDataService.findById(). ID = " + id);
+
        Optional<ContactEntity> entity = repository.findById((long) id);
+       logger.info("Found Contact! Contact First Name = " + entity.get().getFirstName() + " Contact Last Name = " + entity.get().getLastName());
         return entity.get();
     }
 
@@ -46,15 +69,19 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public boolean create(ContactEntity entity) {
+        // Log method entry
+        logger.info("Entering ContactDataService.create()");
+
         try{
             //Save new Entity to database
             repository.save(entity);
+            logger.info("Contact Saved! Contact First Name = " + entity.getFirstName() + " Contact Last Name = " + entity.getLastName());
         }catch(Exception e){
+            logger.error("Contact not saved ... Error: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
         return true;
-
     }
 
     /**
@@ -65,10 +92,15 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public boolean update(ContactEntity entity) {
+        // Log method entry
+        logger.info("Entering ContactDataService.update()");
+
         try{
             //Save new Entity to database
             repository.save(entity);
+            logger.info("Contact Updated! Contact First Name = " + entity.getFirstName() + " Contact Last Name = " + entity.getLastName());
         }catch(Exception e){
+            logger.error("Contact not updated ... Error: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -83,15 +115,19 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
      */
     @Override
     public boolean delete(ContactEntity entity) {
+        // Log method entry
+        logger.info("Entering ContactDataService.delete()");
 
         try{
             repository.delete(entity);
+            logger.info("Contact deleted! ID = " + entity.getId());
             return true;
         }
         catch (Exception e)
         {
-         e.printStackTrace();
-         return false;
+            logger.error("Contact not deleted ... Error: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         }
     }
 }
