@@ -40,7 +40,7 @@ public class ContactDataService implements DataAccessInterface<ContactEntity> {
             return entities;
         }
         catch (Exception e) {
-            logger.error("No contacts found ... Error: " + e.getMessage());
+            logger.error("No contacts found ..... Error: " + e.getMessage());
             throw new RuntimeException(e);
         }
     }

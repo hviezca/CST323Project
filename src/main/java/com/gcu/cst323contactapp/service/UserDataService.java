@@ -53,6 +53,8 @@ public class UserDataService implements DataAccessInterface<UserEntity> {
 
     @Override
     public UserEntity findById(int id) {
+        logger.info("Entering UserDataService.findById()");
+
         return null;
     }
 
